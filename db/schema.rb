@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_022115) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_031531) do
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.text "flag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "leagues", force: :cascade do |t|
     t.string "name"
     t.text "logo"
@@ -18,6 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_022115) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "type_id", null: false
+    t.integer "country_id", null: false
+    t.index ["country_id"], name: "index_leagues_on_country_id"
     t.index ["type_id"], name: "index_leagues_on_type_id"
   end
 
@@ -27,5 +37,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_022115) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "leagues", "countries"
   add_foreign_key "leagues", "types"
 end
