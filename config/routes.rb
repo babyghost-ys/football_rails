@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'types/index'
   root "leagues#index"
 
   resources :leagues, :countries, :types
