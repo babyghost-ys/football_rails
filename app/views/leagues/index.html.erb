@@ -2,7 +2,7 @@
 <ul>
   <% @leagues.each do |league| %>
     <li>
-      <%= league.name %>, <%= league.country.name %>, <%= league.type.name %>
+      <%= link_to league.name, league %>, <%= link_to league.country.name, league.country %>, <%= link_to league.type.name, league.type %>
     </li>
   <% end %>
 </ul>
