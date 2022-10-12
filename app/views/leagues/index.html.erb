@@ -1,0 +1,8 @@
+<h1>Leagues#index</h1>
+<ul>
+  <% @leagues.each do |league| %>
+    <li>
+      <%= league.name %>, <%= league.country.name %>, <%= league.type.name %>
+    </li>
+  <% end %>
+</ul>
