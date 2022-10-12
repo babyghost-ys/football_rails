@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_234304) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_12_022115) do
   create_table "leagues", force: :cascade do |t|
     t.string "name"
     t.text "logo"
     t.string "season"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "type_id", null: false
+    t.index ["type_id"], name: "index_leagues_on_type_id"
   end
 
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "leagues", "types"
 end
