@@ -1,5 +1,8 @@
 <%= render "common/menu" %>
 <div class="container">
+  <%= image_tag @league.logo, class: "img-responsive" %>
   <h1><%= @league.name %></h1>
+  <p>Latest Season: <%= @league.season %></p>
+  <p>Type: <%= link_to @league.type.name, @league.type %></p>
   <p>Country: <%= link_to @league.country.name, @league.country %></p>
 </div>
