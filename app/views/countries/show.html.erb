@@ -1,4 +1,10 @@
 <%= render "common/menu" %>
 <div class="container">
   <h2><%= @country.name %></h2>
+  <%= image_tag @country.flag, class: "img-responsive" %>
+  <p>Capital: <%= @country.capital %></p>
+  <p>Region: <%= @country.region %></p>
+  <p>Languages: <%= @country.languages %></p>
+  <p>Population: <%= @country.population %></p>
+  <p>Area: <%= @country.area %></p>
 </div>
