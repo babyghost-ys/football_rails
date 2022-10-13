@@ -79,10 +79,13 @@ leagues.each do |league|
   current_type_id = Type.where({ name: league['league']['type'] }).first.id
 
   # Create the associated item to the League table by country object
-  country.leagues.create(
+  new_item = country.leagues.create(
     name: league['league']['name'],
     logo: league['league']['logo'],
     season: league['seasons'][0]['start'],
     type_id: current_type_id
   )
+
+  player = Player.find_or_create_by(name: "test")
+  PlayerLeague.create(player: player, league: new_item)
 end
