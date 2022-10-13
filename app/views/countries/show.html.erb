@@ -1,7 +1,9 @@
 <%= render "common/menu" %>
 <div class="container">
   <% if @country.name == 'World' %>
-    <h2>This is an event globally. So no additional information to be shown. </h2>
+    <h2>These are the events happened globally. </h2>
+  <% elsif @country.name == 'Scotland' %>
+    <h2>No additional country info for <%= @country.name %>. But here are the related events</h2>
   <% else %>
     <h2><%= @country.name %></h2>
     <%= image_tag @country.flag, class: "img-responsive" %>
@@ -11,4 +13,12 @@
     <p>Population: <%= @country.population %></p>
     <p>Area: <%= @country.area %></p>
   <% end %>
+  <p>Leagues/Cups: </p>
+  <ul>
+    <% @country.leagues.each do |league| %>
+      <li>
+        <%= link_to league.name, league %>
+      </li>
+    <% end %>
+  </ul>
 </div>
