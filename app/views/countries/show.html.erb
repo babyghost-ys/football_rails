@@ -1,7 +1,7 @@
 <%= render "common/menu" %>
 <div class="container">
   <% if @country.name == 'World' %>
-    <h2>This is about the world.</h2>
+    <h2>This is an event globally. So no additional information to be shown. </h2>
   <% else %>
     <h2><%= @country.name %></h2>
     <%= image_tag @country.flag, class: "img-responsive" %>
