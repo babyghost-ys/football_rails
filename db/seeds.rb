@@ -36,7 +36,7 @@ leagues.each do |league|
 
   # Create the type and country first
   type = Type.find_or_create_by(name: league["league"]["type"])
-  country = Country.find_or_create_by(name: league["country"]["name"])
+  country = Country.find_or_create_by(name: league["country"]["name"], code: league["country"]["code"], flag: league["country"]["code"])
 
   # Find out the id so that we can add that to the League table correctly
   current_type_id = Type.where({name: league["league"]["type"]}).first.id
