@@ -55,7 +55,7 @@ leagues.each do |league|
       country_languages = country_info[0]["languages"].map{|k, v| v}
 
       # Assign to the country variable so that we can add that easily in the future
-      country["capital"] = country_info[0]["capital"]
+      country["capital"] = country_info[0]["capital"].join(", ")
       country["region"] = country_info[0]["region"]
       country["languages"] = country_languages.join(", ")
       country["population"] = country_info[0]["population"]
@@ -65,8 +65,15 @@ leagues.each do |league|
 
   # Create the type and country
   type = Type.find_or_create_by(name: league['league']['type'])
-  country = Country.find_or_create_by(name: league['country']['name'], code: league['country']['code'],
-                                      flag: country["region"])
+  country = Country.find_or_create_by(
+    name: league['country']['name'],
+    code: league['country']['code'],
+    flag: league['country']['flag'],
+    capital: country["capital"],
+    region: country["region"],
+    languages: country["languages"],
+    population: country["population"],
+    area: country["area"])
 
   # Find out the id so that we can add that to the League table correctly
   current_type_id = Type.where({ name: league['league']['type'] }).first.id
