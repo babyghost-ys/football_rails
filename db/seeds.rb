@@ -38,16 +38,28 @@ leagues.each do |league|
   if "#{league['country']['code']}".empty?
     puts 'Country is null or world'
   else
-    current_country = league['country']['name'].gsub("-", "%20")
 
+    # We need to replace some weird stuff before requesting the API
+    current_country = league['country']['name'].gsub("-", "%20")
     if current_country == "England"
       current_country = "United%20Kingdom"
     end
 
+    # Request #1 source for the country info
     country_info = fetch_data("https://restcountries.com/v3.1/name/#{current_country}")
 
+    # Make sure there are something returned
     if country_info.class == Array
+
+      # Modify the languages info returned and turn that to string
+      country_languages = country_info[0]["languages"].map{|k, v| v}
+
+      # Assign to the country variable so that we can add that easily in the future
+      country["capital"] = country_info[0]["capital"]
       country["region"] = country_info[0]["region"]
+      country["languages"] = country_languages.join(", ")
+      country["population"] = country_info[0]["population"]
+      country["area"] = country_info[0]["area"]
     end
   end
 
