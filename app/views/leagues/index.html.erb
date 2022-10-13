@@ -1,9 +1,17 @@
 <%= render "common/menu" %>
 <div class="container">
-  <h1>Leagues#index</h1>
-  <ul>
+  <h1>Leagues</h1>
+  <div class="row">
     <%= paginate @leagues %> <% @leagues.each do |league| %>
-    <li><%= link_to league.name, league %>, <%= link_to league.country.name, league.country %>, <%= link_to league.type.name, league.type %></li>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <%= image_tag league.logo, class: "img-responsive" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= league.name %></h5>
+            <%= link_to "Details", league, class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>
