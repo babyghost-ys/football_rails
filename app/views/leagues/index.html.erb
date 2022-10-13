@@ -1,9 +1,9 @@
-<h1>Leagues#index</h1>
-<ul>
-<%= paginate @leagues %>
-  <% @leagues.each do |league| %>
-    <li>
-      <%= link_to league.name, league %>, <%= link_to league.country.name, league.country %>, <%= link_to league.type.name, league.type %>
-    </li>
-  <% end %>
-</ul>
+<%= render "common/menu" %>
+<div class="container">
+  <h1>Leagues#index</h1>
+  <ul>
+    <%= paginate @leagues %> <% @leagues.each do |league| %>
+    <li><%= link_to league.name, league %>, <%= link_to league.country.name, league.country %>, <%= link_to league.type.name, league.type %></li>
+    <% end %>
+  </ul>
+</div>
