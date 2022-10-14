@@ -5,5 +5,12 @@
   <p>Latest Season: <%= @league.season %></p>
   <p>Type: <%= link_to @league.type.name, @league.type %></p>
   <p>Country: <%= link_to @league.country.name, @league.country %></p>
-  <p>Players:  <%= @league.players.map(&:name).join(",")%></p>
+  <p>Players:  </p>
+  <ul>
+    <% @league.players.each do |player| %>
+      <li>
+        <%= link_to player.name, player %>
+      </li>
+    <% end %>
+  </ul>
 </div>

@@ -1,0 +1,11 @@
+<%= render "common/menu" %>
+<div class="container">
+  <h1>Related events for <%= @player.name %>:</h1>
+  <ul>
+    <% @player.leagues.each do |league| %>
+      <li>
+        <%= link_to league.name, league %>
+      </li>
+    <% end %>
+  </ul>
+</div>
