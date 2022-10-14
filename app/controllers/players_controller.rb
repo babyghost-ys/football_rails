@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
   def index
+    @players = Player.all.page(params[:page])
   end
 
   def show
