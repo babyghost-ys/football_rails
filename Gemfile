@@ -45,6 +45,9 @@ gem "bootsnap", require: false
 # Pagination Gem
 gem 'kaminari'
 
+# Faker Gem
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

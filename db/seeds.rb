@@ -2,10 +2,13 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
+require 'faker'
 
 # Clear all the tables first
+PlayerLeague.delete_all
 League.delete_all
 Type.delete_all
+Player.delete_all
 Country.delete_all
 puts 'Deleted all table'
 
@@ -86,6 +89,9 @@ leagues.each do |league|
     type_id: current_type_id
   )
 
-  player = Player.find_or_create_by(name: "test")
-  PlayerLeague.create(player: player, league: new_item)
+  rand(10..100).times do
+    player = Player.find_or_create_by(name: Faker::Name.name)
+    PlayerLeague.create(player: player, league: new_item)
+  end
+
 end
