@@ -1,2 +1,19 @@
-<h1>Countries</h1>
-<p>Find me in app/views/countries/index.html.erb</p>
+<%= render "common/menu" %>
+<div class="container">
+  <h1>Countries</h1>
+  <div class="row">
+    <%= paginate @countries %> <% @countries.each do |country| %>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <% if country.flag != nil %>
+            <%= image_tag country.flag, class: "img-responsive" %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= country.name %></h5>
+            <%= link_to "Details", country, class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

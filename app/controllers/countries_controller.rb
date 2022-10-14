@@ -1,5 +1,6 @@
 class CountriesController < ApplicationController
   def index
+    @countries = Country.all.page(params[:page])
   end
 
   def show
