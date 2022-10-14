@@ -1,6 +1,6 @@
 <%= render "common/menu" %>
 <div class="container">
-  <h1>Related events for <%= @player.name %>:</h1>
+  <h1><%= @player.name %> partcipate the folloing leagues:</h1>
   <ul>
     <% @player.leagues.each do |league| %>
       <li>
