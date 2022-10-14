@@ -32,6 +32,12 @@ end
 returned_content = fetch_data('https://webdev2.winandmac.com/sample.json')
 leagues = returned_content['response']
 
+# Generate some fake players using Faker
+football_players = []
+30.times do
+  football_players.append(Faker::Name.name)
+end
+
 # Loop through the returned items
 leagues.each do |league|
 
@@ -89,9 +95,9 @@ leagues.each do |league|
     type_id: current_type_id
   )
 
-  rand(10..100).times do
-    player = Player.find_or_create_by(name: Faker::Name.name)
-    PlayerLeague.create(player: player, league: new_item)
+  rand(0..29).times do
+    player = Player.find_or_create_by(name: football_players[rand(0..29)])
+    PlayerLeague.find_or_create_by(player: player, league: new_item)
   end
 
 end
