@@ -10,7 +10,7 @@
     <% @leagues.each do |league| %>
       <div class="col">
         <div class="card" style="width: 18rem;">
-          <%= image_tag league.logo, class: "img-responsive" %>
+          <%= image_tag league.logo, class: "img-responsive", alt: league.name %>
           <div class="card-body">
             <h5 class="card-title"><%= league.name %></h5>
             <%= link_to "Details", league, class: "btn btn-primary"%>
@@ -19,5 +19,4 @@
       </div>
     <% end %>
   </div>
-</div>
 </div>
