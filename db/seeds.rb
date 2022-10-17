@@ -64,7 +64,9 @@ leagues.each do |league|
       country_languages = country_info[0]["languages"].map{|k, v| v}
 
       # Assign to the country variable so that we can add that easily in the future
-      country["capital"] = country_info[0]["capital"].join(", ")
+      if country_info[0]["capital"].class == Array
+        country["capital"] = country_info[0]["capital"].join(", ")
+      end
       country["region"] = country_info[0]["region"]
       country["languages"] = country_languages.join(", ")
       country["population"] = country_info[0]["population"]
