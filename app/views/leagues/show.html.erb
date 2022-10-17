@@ -5,12 +5,16 @@
   <p>Latest Season: <%= @league.season %></p>
   <p>Type: <%= link_to @league.type.name, @league.type %></p>
   <p>Country: <%= link_to @league.country.name, @league.country %></p>
-  <p>Players:  </p>
-  <ul>
-    <% @league.players.each do |player| %>
-      <li>
-        <%= link_to player.name, player %>
-      </li>
-    <% end %>
-  </ul>
+  <% if @league.players.count > 0 %>
+    <p>Players:  </p>
+    <ul>
+      <% @league.players.each do |player| %>
+        <li>
+          <%= link_to player.name, player %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No related players found.</p>
+  <% end %>
 </div>
