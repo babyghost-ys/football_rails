@@ -1,11 +1,21 @@
 <%= render "common/menu" %>
 <div class="container">
-  <p class="mb-5">
-    Found <%= pluralize(@leagues.count, 'league') %>  found when searching for: <%= params[:keywords] %>
-  </p>
-  <ul>
+  <div class="row">
+    <div class="col">
+      <h2>Found <%= pluralize(@leagues.count, 'league') %> for <%= params[:keywords] %></h2>
+    </div>
+  </div>
+  <div class="row">
     <% @leagues.each do |league| %>
-      <li><%= link_to league.name, league %></li>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <%= image_tag league.logo, class: "img-responsive", alt: league.name %>
+          <div class="card-body">
+            <h5 class="card-title"><%= league.name %></h5>
+            <%= link_to "Details", league, class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>
