@@ -2,7 +2,12 @@
 <div class="container">
   <h1>Players</h1>
   <div class="row">
-    <%= paginate @players %> <% @players.each do |player| %>
+    <div class="col">
+      <%= paginate @players %>
+    </div>
+  </div>
+  <div class="row">
+    <% @players.each do |player| %>
       <div class="col">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
@@ -13,4 +18,5 @@
       </div>
     <% end %>
   </div>
+</div>
 </div>
