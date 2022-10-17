@@ -11,9 +11,9 @@
           <li><a href="/countries" class="nav-link px-2 text-white">Countries</a></li>
           <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
         </ul>
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-        </form>
+        <%= form_with(url: search_leagues_path, method: :get, local: true, class: "col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3") do %>
+          <%= text_field_tag(:keywords, nil, class: "form-control form-control-dark text-bg-dark", placeholder: 'Search') %>
+        <% end %>
       </div>
     </div>
   </header>

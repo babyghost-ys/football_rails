@@ -95,6 +95,7 @@ leagues.each do |league|
     type_id: current_type_id
   )
 
+  # Generate the many-to-many relationships.
   rand(0..29).times do
     player = Player.find_or_create_by(name: football_players[rand(0..29)])
     PlayerLeague.find_or_create_by(player: player, league: new_item)
